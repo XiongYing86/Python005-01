@@ -1,0 +1,23 @@
+/*
+将修改字符集的配置项
+*/
+SET global character_set_client='utf8mb4';
+SET global character_set_server='utf8mb4';
+SET global character_set_database='utf8mb4';
+/*
+验证字符集的 SQL 语句
+*/
+show variable like 'character%';
+
+/*
+以下是建库语句、设置字符集为 utf8mb4 校验规则为 utf8mb4_general_ci
+*/
+DROP DATABASE IF EXISTS 'tsdb_mb4';
+CREATE DATABASE 'tsdb_mb4' DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+
+/*
+创建chenwei1用户，并为chenwei1用户添加具有对tsdb_mb4数据库的全部权限，且有远程访问权限
+*/
+GRANT all privileges ON tsdb_mb4.* TO 'chenwei1'@'%'  IDENTIFIED BY 'Chenwei@123456' with grant option;
+
+flush privileges;

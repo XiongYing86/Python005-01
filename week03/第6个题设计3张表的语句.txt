@@ -1,0 +1,44 @@
+-- ------------------------------------------------
+-- 用户表，包含用户 ID 和用户名字
+-- ------------------------------------------------
+DROP TABLE IF EXISTS `user3`;
+CREATE TABLE `user3` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- ----------------------------
+-- 用户表中插入记录
+-- ----------------------------
+INSERT INTO `user3` VALUES ('1001', '张三');
+INSERT INTO `user3` VALUES ('1002', '李四');
+
+
+-- ------------------------------------------------
+-- 用户资产表，包含用户 ID 用户总资产
+-- ------------------------------------------------
+DROP TABLE IF EXISTS `zichan`;
+CREATE TABLE `zichan` (
+  `id` int(11) NOT NULL,
+  `money` double(9,3) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- ----------------------------
+-- 资产表中插入记录
+-- ----------------------------
+INSERT INTO `zichan` VALUES ('1001', '1100.120');
+INSERT INTO `zichan` VALUES ('1002', '604.060');
+
+
+-- --------------------------------------------------------------------
+-- 审计用表，记录了转账时间，转账 id，被转账 id，转账金额
+-- --------------------------------------------------------------------
+DROP TABLE IF EXISTS `audit`;
+CREATE TABLE `audit` (
+  `zhuanzhang_time` datetime DEFAULT NULL,
+  `zhuanzhang_id` int(11) DEFAULT NULL,
+  `beizhuanzhuang_id` int(11) DEFAULT NULL,
+  `zhuanzhuang_money` double(9,3) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
